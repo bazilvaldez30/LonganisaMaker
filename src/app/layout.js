@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Navbar from './components/Navbar'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,8 +12,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <>
+      <Head>
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+      <html>
+        <div className='min-h-screen flex flex-col'>
+          <Navbar />
+          <div className={`${inter.className} grow container mx-auto py-12`}>{children}</div>
+        </div>
+      </html>
+    </>
   )
 }
