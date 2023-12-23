@@ -3,10 +3,10 @@ import FlavorsButton from './components/FlavorsButton'
 
 export default function Home() {
   return (
-    <div className='grow flex px-6'>
+    <div className='grow flex px-6 py-8'>
       <div className='w-full text-center'>
         <div>
-          <h1 className='min-h-[500px] flex items-center justify-center'>IMAGE LOGO</h1>
+          <span className='min-h-[150px] flex items-center justify-center'>IMAGE LOGO</span>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown

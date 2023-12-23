@@ -1,12 +1,52 @@
+'use client'
+
+import Cookies from 'js-cookie'
 import Link from 'next/link'
-import React from 'react'
+import { usePathname } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import api from '../api/api'
+import { useAuthContext } from '../context/AuthContext'
 
 export default function Navbar() {
+  const [userData, setUserData] = useState('')
+
+  const { isAuthenticated, setIsAuthenticated } = useAuthContext()
+
+  const url = usePathname()
+
+  /* useEffect(() => {
+    const user = Cookies.get('user')
+    if (user) {
+      setUserData(user)
+    }
+  }, []) */
+  const refresh = Cookies.get('refresh')
+
+  const handleLogout = async () => {
+    try {
+      const response = await api.post('/auth/logout/', { refresh })
+      if (response.status === 200) {
+        Cookies.remove('access')
+        Cookies.remove('refresh')
+        Cookies.remove('user')
+        setIsAuthenticated(false)
+        router.push('/')
+      } else if (response.status === 400) {
+        console.log(response.data)
+      }
+    } catch (error) {
+      Cookies.remove('access')
+      Cookies.remove('refresh')
+      Cookies.remove('user')
+      console.error(error)
+    }
+  }
+
   return (
     <nav className='bg-gray-800'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex h-16 items-center justify-between'>
-          <div className='flex items-center'>
+          <div className='flex items-center w-1/3'>
             <Link href={'/'} className='flex-shrink-0'>
               <img
                 className='h-8 w-8'
@@ -14,41 +54,46 @@ export default function Navbar() {
                 alt='Your Company'
               />
             </Link>
-            <div className='hidden md:block'>
-              <div className='ml-10 flex items-baseline space-x-4'>
-                <Link
-                  href='/'
-                  className='bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium'
-                  aria-current='page'
-                >
-                  Dashboard
-                </Link>
-              </div>
+          </div>
+          <div className='hidden md:flex justify-center w-1/3'>
+            <div className='flex items-baseline space-x-4'>
+              <Link
+                href='/'
+                className={`${
+                  url === '/' ? 'bg-gray-900' : ''
+                } text-white rounded-md px-3 py-2 text-sm font-medium`}
+                aria-current='page'
+              >
+                Dashboard
+              </Link>
+            </div>
+            <div className='flex items-baseline space-x-4'>
+              <Link
+                href='/create-new-flavor2'
+                className={`${
+                  url === '/create-new-flavor2' ? 'bg-gray-900' : ''
+                } text-white rounded-md px-3 py-2 text-sm font-medium`}
+                aria-current='page'
+              >
+                Customize
+              </Link>
             </div>
           </div>
-          <div className='hidden md:block'>
+
+          <div className='hidden md:flex justify-end w-1/3'>
             <div className='ml-4 flex items-center md:ml-6'>
-              <button
-                type='button'
-                className='relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
-              >
-                <span className='absolute -inset-1.5'></span>
-                <span className='sr-only'>View notifications</span>
-                <svg
-                  className='h-6 w-6'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth='1.5'
-                  stroke='currentColor'
-                  aria-hidden='true'
+              {isAuthenticated ? (
+                <button
+                  onClick={handleLogout}
+                  className='border-0 relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
                 >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0'
-                  />
-                </svg>
-              </button>
+                  LOGOUT
+                </button>
+              ) : (
+                <Link href={'/login'} className='p-1 text-gray-400 hover:text-white'>
+                  LOGIN
+                </Link>
+              )}
             </div>
           </div>
         </div>

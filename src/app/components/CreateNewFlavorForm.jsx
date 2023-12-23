@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function CreateNewFlavorForm() {
   return (
-    <div className='mx-auto w-full max-w-md px-4 sm:px-6 lg:px-8 py-8 bg-white rounded-md shadow-lg min-h-[450px] flex flex-col justify-center space-y-6'>
+    <div className='mx-auto w-full max-w-md px-4 sm:px-6 lg:px-8 py-8 bg-white rounded-md shadow-lg min-h-[450px] flex flex-col justify-center space-y-6 my-8'>
       <div>
         <h3 className='text-[#800080]'>Craft Your Signature Longganisa</h3>
         <p>
