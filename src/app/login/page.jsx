@@ -71,7 +71,7 @@ export default function page() {
             className='px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
           />
         </div>
-        <button className='bg-[#800080]' type='submit'>
+        <button className='custom-button bg-[#800080]' type='submit'>
           Log in
         </button>
       </div>
