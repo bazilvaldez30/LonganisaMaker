@@ -41,11 +41,7 @@ export default function Navbar() {
         <div className='flex h-16 items-center justify-between'>
           <div className='flex items-center w-1/3'>
             <Link href={'/'} className='flex-shrink-0'>
-              <img
-                className='h-8 w-8'
-                src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
-                alt='Your Company'
-              />
+              <img className='h-8 w-8' src='/Logo_LMM.png' alt='Your Company' />
             </Link>
           </div>
           <div className='hidden md:flex justify-center w-1/3 tracking-widest'>

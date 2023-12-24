@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
 import { useAuthContext } from '../context/AuthContext'
 
-export default function page() {
+export default function Page() {
   const { setIsAuthenticated } = useAuthContext()
   const [userInputs, setUserInputs] = useState({
     username: '',

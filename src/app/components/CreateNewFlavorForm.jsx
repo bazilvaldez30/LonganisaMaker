@@ -2,6 +2,9 @@
 
 import Link from 'next/link'
 import React, { useState } from 'react'
+import api from '../api/api'
+import { notification } from 'antd'
+import { useRouter } from 'next/navigation'
 
 export default function CreateNewFlavorForm() {
   const [flavorInputs, setFlavorInputs] = useState({
@@ -13,11 +16,68 @@ export default function CreateNewFlavorForm() {
     ingredient5: 0,
   })
 
+  const [loading, setLoading] = useState(false)
+
+  const router = useRouter()
+
   const handleInputChange = async (e) => {
     const name = e.target.name
     const value = e.target.value
 
     setFlavorInputs((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    const formData = new FormData()
+    formData.append('title', flavorInputs.name)
+    formData.append('amount1', flavorInputs.ingredient1)
+    formData.append('amount2', flavorInputs.ingredient2)
+    formData.append('amount3', flavorInputs.ingredient3)
+    formData.append('amount4', flavorInputs.ingredient4)
+    formData.append('amount5', flavorInputs.ingredient5)
+    const response = await api.post('/flavors/create', formData)
+
+    if (response.status == 201) {
+      notification['success']({
+        message: 'New flavors successfully added!',
+        placement: 'top',
+      })
+
+      setFlavorInputs({
+        name: '',
+        ingredient1: 0,
+        ingredient2: 0,
+        ingredient3: 0,
+        ingredient4: 0,
+        ingredient5: 0,
+      })
+      setTimeout(() => {
+        router.push('/flavors')
+      }, 2000)
+      return
+    } else {
+      notification['error']({
+        message: `${response.data.title}`,
+        placement: 'top',
+      })
+    }
+
+    setLoading(false)
+  }
+
+  const handleClear = (e) => {
+    e.preventDefault()
+    setFlavorInputs({
+      name: '',
+      ingredient1: 0,
+      ingredient2: 0,
+      ingredient3: 0,
+      ingredient4: 0,
+      ingredient5: 0,
+    })
   }
 
   return (
@@ -29,11 +89,12 @@ export default function CreateNewFlavorForm() {
           simply dummy text of the printing and typesetting industry.
         </p>
       </div>
-      <form className='space-y-6 text-start'>
+      <form onSubmit={handleSubmit} className='space-y-6 text-start'>
         <div className='flex flex-col gap-2'>
           <label>Flavor Name</label>
           <input
             onChange={(e) => handleInputChange(e)}
+            value={flavorInputs.name}
             name='name'
             type='text'
             placeholder='Enter flavor name'
@@ -45,6 +106,8 @@ export default function CreateNewFlavorForm() {
             <label>Sugar</label>
             <input
               onChange={(e) => handleInputChange(e)}
+              min={0}
+              value={flavorInputs.ingredient1}
               name='ingredient1'
               type='number'
               placeholder='Amount in grams'
@@ -55,6 +118,8 @@ export default function CreateNewFlavorForm() {
             <label>Salt</label>
             <input
               onChange={(e) => handleInputChange(e)}
+              min={0}
+              value={flavorInputs.ingredient2}
               name='ingredient2'
               type='number'
               placeholder='Amount in grams'
@@ -65,6 +130,8 @@ export default function CreateNewFlavorForm() {
             <label>Pepper</label>
             <input
               onChange={(e) => handleInputChange(e)}
+              min={0}
+              value={flavorInputs.ingredient3}
               name='ingredient3'
               type='number'
               placeholder='Amount in grams'
@@ -75,6 +142,8 @@ export default function CreateNewFlavorForm() {
             <label>Paprika</label>
             <input
               onChange={(e) => handleInputChange(e)}
+              min={0}
+              value={flavorInputs.ingredient4}
               name='ingredient4'
               type='number'
               placeholder='Amount in grams'
@@ -85,6 +154,8 @@ export default function CreateNewFlavorForm() {
             <label>Magic sarap</label>
             <input
               onChange={(e) => handleInputChange(e)}
+              min={0}
+              value={flavorInputs.ingredient5}
               name='ingredient5'
               type='number'
               placeholder='Amount in grams'
@@ -93,8 +164,10 @@ export default function CreateNewFlavorForm() {
           </div>
         </div>
         <div className='flex justify-center gap-6'>
-          <button className='custom-button w-full max-w-[10rem]'>Clear</button>
-          <button type='submit' className='custom-button w-full max-w-[10rem]'>
+          <button onClick={handleClear} className='custom-button w-full max-w-[10rem]'>
+            Clear
+          </button>
+          <button type='submit' className='custom-button w-full max-w-[10rem]' disabled={loading}>
             Create
           </button>
         </div>
