@@ -21,8 +21,8 @@ export default function RootLayout({ children }) {
 
       <body className='min-h-screen flex flex-col'>
         <AuthProvider>
-          <Navbar />
           <div className={`${inter.className} grow container mx-auto pt-5`}>{children}</div>
+          <Navbar />
         </AuthProvider>
       </body>
     </html>
