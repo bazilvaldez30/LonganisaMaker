@@ -25,9 +25,8 @@ export default function CreateNewFlavorForm() {
       <div className='text-center'>
         <h3 className='text-[#800080]'>Craft Your Signature Longganisa</h3>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry.
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is
+          simply dummy text of the printing and typesetting industry.
         </p>
       </div>
       <form className='space-y-6 text-start'>
@@ -37,7 +36,7 @@ export default function CreateNewFlavorForm() {
             onChange={(e) => handleInputChange(e)}
             name='name'
             type='text'
-            placeholder='Amount in grams'
+            placeholder='Enter flavor name'
             className='px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-purple-500'
           />
         </div>

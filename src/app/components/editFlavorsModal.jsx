@@ -38,7 +38,7 @@ export default function EditButtonModal({ flavor }) {
 
   return (
     <>
-      <button className='border-0 text-blue-500' type='' onClick={showModal}>
+      <button className='text-sm border-0 font-medium text-blue-500' type='' onClick={showModal}>
         Edit
       </button>
       <Modal
@@ -55,7 +55,7 @@ export default function EditButtonModal({ flavor }) {
               onChange={(e) => handleInputChange(e)}
               name='name'
               type='text'
-              placeholder='Amount in grams'
+              placeholder='Enter flavor name'
               className='px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-purple-500'
             />
           </div>

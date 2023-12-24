@@ -43,11 +43,7 @@ export default function page() {
             <th scope='col' className='px-6 py-3'></th>
             <th scope='col' className='px-6 py-3'></th>
             <th scope='col' className='px-6 py-3 flex justify-end'>
-              <Link
-                href='/create-new-flavor'
-                className='border-0'
-                onClick={() => console.log}
-              >
+              <Link href='/create-new-flavor' className='border-0' onClick={() => console.log}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   height='23'
@@ -67,10 +63,7 @@ export default function page() {
           {flavors &&
             flavors.map((flavor, index) => (
               <tr className='bg-white border-b  hover:bg-gray-50' key={index}>
-                <th
-                  scope='row'
-                  className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'
-                >
+                <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
                   {flavor.title}
                 </th>
                 <td className='px-6 py-4'></td>
@@ -78,12 +71,7 @@ export default function page() {
                 <td className='px-6 py-4'></td>
                 <td className='px-6 py-4 flex justify-end gap-3'>
                   <EditButtonModal flavor={flavor} />
-                  <a
-                    href='#'
-                    className='font-medium text-red-600  hover:underline'
-                  >
-                    Delete
-                  </a>
+                  <button className='text-sm border-0 font-medium text-red-600'>Delete</button>
                 </td>
               </tr>
             ))}

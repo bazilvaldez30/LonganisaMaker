@@ -8,8 +8,7 @@ import api from '../api/api'
 import { useAuthContext } from '../context/AuthContext'
 
 export default function Navbar() {
-  const { isAuthenticated, setIsAuthenticated, isAuthloading } =
-    useAuthContext()
+  const { isAuthenticated, setIsAuthenticated, isAuthloading } = useAuthContext()
 
   const url = usePathname()
   const router = useRouter()
@@ -49,7 +48,7 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <div className='hidden md:flex justify-center w-1/3'>
+          <div className='hidden md:flex justify-center w-1/3 tracking-widest'>
             <div className='flex items-baseline space-x-4'>
               <Link
                 href='/'
