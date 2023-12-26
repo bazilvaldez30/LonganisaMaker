@@ -44,7 +44,7 @@ export default function Navbar() {
               <img className='h-8 w-8' src='/Logo_LMM.png' alt='Your Company' />
             </Link>
           </div>
-          <div className='hidden md:flex justify-center w-1/3 tracking-widest'>
+          <div className='flex justify-center w-1/3 tracking-widest'>
             <div className='flex items-baseline space-x-4'>
               <Link
                 href='/'
@@ -80,7 +80,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className='hidden md:flex justify-end w-1/3'>
+          <div className='flex justify-end w-1/3'>
             {isAuthloading ? (
               <div role='status'>
                 <svg
