@@ -52,18 +52,23 @@ export default function EditButtonModal({ flavor }) {
     e.preventDefault()
     setLoading(true)
 
-    const response = await api.patch(`/flavors/${selectedTitle}/update`, flavorInputs)
+    const response = await api.patch(
+      `/flavors/${selectedTitle}/update`,
+      flavorInputs
+    )
 
     if (response.status == 200) {
       notification['success']({
         message: 'Successfully updated!',
-        placement: 'top',
+        placement: 'bottomLeft',
+        duration: 2,
       })
       setIsModalOpen(false)
     } else {
       notification['error']({
         message: 'Something went wrong. Try again later or contact the admin',
-        placement: 'top',
+        placement: 'bottomLeft',
+        duration: 2,
       })
     }
 
@@ -72,7 +77,11 @@ export default function EditButtonModal({ flavor }) {
 
   return (
     <>
-      <button className='text-sm border-0 font-medium text-blue-500' type='' onClick={showModal}>
+      <button
+        className='text-sm border-0 font-medium text-blue-500'
+        type=''
+        onClick={showModal}
+      >
         Edit
       </button>
       <Modal

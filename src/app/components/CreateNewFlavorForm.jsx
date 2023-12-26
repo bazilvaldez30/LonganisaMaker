@@ -43,7 +43,8 @@ export default function CreateNewFlavorForm() {
     if (response.status == 201) {
       notification['success']({
         message: 'New flavors successfully added!',
-        placement: 'top',
+        placement: 'bottomLeft',
+        duration: 2,
       })
 
       setFlavorInputs({
@@ -61,7 +62,8 @@ export default function CreateNewFlavorForm() {
     } else {
       notification['error']({
         message: `${response.data.title}`,
-        placement: 'top',
+        placement: 'bottomLeft',
+        duration: 2,
       })
     }
 
@@ -85,8 +87,9 @@ export default function CreateNewFlavorForm() {
       <div className='text-center'>
         <h3 className='text-[#800080]'>Craft Your Signature Longganisa</h3>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is
-          simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry Lorem Ipsum is simply dummy text of the printing and
+          typesetting industry.
         </p>
       </div>
       <form onSubmit={handleSubmit} className='space-y-6 text-start'>
@@ -164,10 +167,17 @@ export default function CreateNewFlavorForm() {
           </div>
         </div>
         <div className='flex justify-center gap-6'>
-          <button onClick={handleClear} className='custom-button w-full max-w-[10rem]'>
+          <button
+            onClick={handleClear}
+            className='custom-button w-full max-w-[10rem]'
+          >
             Clear
           </button>
-          <button type='submit' className='custom-button w-full max-w-[10rem]' disabled={loading}>
+          <button
+            type='submit'
+            className='custom-button w-full max-w-[10rem]'
+            disabled={loading}
+          >
             Create
           </button>
         </div>

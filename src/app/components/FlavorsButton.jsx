@@ -19,12 +19,14 @@ export default function FlavorsButton() {
     if (response.status == 200) {
       notification['success']({
         message: 'Success',
-        placement: 'top',
+        placement: 'bottomLeft',
+        duration: 2,
       })
     } else {
       notification['error']({
         message: 'Something went wrong. Try again later or contact the admin',
-        placement: 'top',
+        placement: 'bottomLeft',
+        duration: 2,
       })
     }
     setInProgress(false)
