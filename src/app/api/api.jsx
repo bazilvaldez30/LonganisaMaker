@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 
-const backend_url = 'https://192.168.0.100:8000/'
+const backend_url = 'https:/api-longga-weznbalgna-as.a.run.app/'
 
 const api = axios.create({ baseURL: backend_url })
 
@@ -48,9 +48,7 @@ api.interceptors.response.use(
           }
         } else {
           // Redirect to login after 3 failed refresh attempts
-          console.error(
-            'Token refresh attempts exceeded. Redirecting to login.'
-          )
+          console.error('Token refresh attempts exceeded. Redirecting to login.')
           return Promise.reject(error.response) // Reject with the original error
         }
       }
