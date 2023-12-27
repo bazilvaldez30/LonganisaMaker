@@ -83,13 +83,15 @@ export default function CreateNewFlavorForm() {
   }
 
   return (
-    <div className='mx-auto w-full max-w-2xlpx-4 sm:px-6 lg:px-8 py-4 bg-white rounded-md shadow-lg min-h-[450px] flex flex-col justify-center space-y-6 my-4'>
+    <div className='mx-auto w-full max-w-2xlpx-4 sm:px-6 lg:px-8 py-4 bg-white rounded-md shadow-lg min-h-[450px] flex flex-col justify-center space-y-6 my-4 p-7'>
       <div className='text-center'>
-        <h3 className='text-[#800080]'>Craft Your Signature Longganisa</h3>
+        <h3 className='text-[#800080]'>
+          In this section, you can craft your own signature longganisa flavor
+        </h3>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry.
+          Explore new tastes and unleash your creativity by inventing unique combinations of spices,
+          herbs, and other ingredients. Don't hesitate to experiment and create additional flavors
+          to add a diverse array of delectable longganisa varieties to your culinary repertoire.
         </p>
       </div>
       <form onSubmit={handleSubmit} className='space-y-6 text-start'>
@@ -167,17 +169,10 @@ export default function CreateNewFlavorForm() {
           </div>
         </div>
         <div className='flex justify-center gap-6'>
-          <button
-            onClick={handleClear}
-            className='custom-button w-full max-w-[10rem]'
-          >
+          <button onClick={handleClear} className='custom-button w-full max-w-[10rem]'>
             Clear
           </button>
-          <button
-            type='submit'
-            className='custom-button w-full max-w-[10rem]'
-            disabled={loading}
-          >
+          <button type='submit' className='custom-button w-full max-w-[10rem]' disabled={loading}>
             Create
           </button>
         </div>
