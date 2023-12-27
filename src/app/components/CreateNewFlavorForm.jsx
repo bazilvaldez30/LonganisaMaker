@@ -90,8 +90,9 @@ export default function CreateNewFlavorForm() {
         </h3>
         <p>
           Explore new tastes and unleash your creativity by inventing unique combinations of spices,
-          herbs, and other ingredients. Don't hesitate to experiment and create additional flavors
-          to add a diverse array of delectable longganisa varieties to your culinary repertoire.
+          herbs, and other ingredients. Don&apos;t hesitate to experiment and create additional
+          flavors to add a diverse array of delectable longganisa varieties to your culinary
+          repertoire.
         </p>
       </div>
       <form onSubmit={handleSubmit} className='space-y-6 text-start'>
