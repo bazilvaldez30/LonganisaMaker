@@ -20,11 +20,20 @@ export default function MachineControls() {
     try {
       const response = await api.post('/grinder', formData)
       if (response.status === 200) {
-        notification['success']({
-          message: `Grinder is now turned ${isGrinder.toLowerCase}`,
-          placement: 'bottomLeft',
-          duration: 2,
-        })
+        if (response.data == 'ON') {
+          notification['success']({
+            message: 'Grinder is now running',
+            placement: 'bottomLeft',
+            duration: 2,
+          })
+        }
+        if (response.data == 'OFF') {
+          notification['success']({
+            message: 'Grinder is now turned off',
+            placement: 'bottomLeft',
+            duration: 2,
+          })
+        }
       } else {
         setIsGrinder('ON')
         notification['error']({
@@ -48,11 +57,20 @@ export default function MachineControls() {
     try {
       const response = await api.post('/mixer', formData)
       if (response.status === 200) {
-        notification['success']({
-          message: 'Mixer is now running',
-          placement: 'bottomLeft',
-          duration: 2,
-        })
+        if (response.data == 'ON') {
+          notification['success']({
+            message: 'Mixer is now running',
+            placement: 'bottomLeft',
+            duration: 2,
+          })
+        }
+        if (response.data == 'OFF') {
+          notification['success']({
+            message: 'Mixer is now turned off',
+            placement: 'bottomLeft',
+            duration: 2,
+          })
+        }
       } else {
         setIsMixer('ON')
         notification['error']({
@@ -76,11 +94,20 @@ export default function MachineControls() {
     try {
       const response = await api.post('/tie', formData)
       if (response.status === 200) {
-        notification['success']({
-          message: 'Tieing machine is now running',
-          placement: 'bottomLeft',
-          duration: 2,
-        })
+        if (response.data == 'ON') {
+          notification['success']({
+            message: 'Tying is now running',
+            placement: 'bottomLeft',
+            duration: 2,
+          })
+        }
+        if (response.data == 'OFF') {
+          notification['success']({
+            message: 'Tying is now turned off',
+            placement: 'bottomLeft',
+            duration: 2,
+          })
+        }
       } else {
         setIsTeing('ON')
         notification['error']({

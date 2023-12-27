@@ -17,11 +17,14 @@ export default function RootLayout({ children }) {
       <Head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='manifest' href='/manifest.json' />
       </Head>
 
       <body className='min-h-screen flex flex-col'>
         <AuthProvider>
-          <div className={`${inter.className} grow container mx-auto pt-5`}>{children}</div>
+          <div className={`${inter.className} grow container mx-auto pt-5`}>
+            {children}
+          </div>
           <Navbar />
         </AuthProvider>
       </body>
